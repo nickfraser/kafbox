@@ -58,6 +58,10 @@ switch ktype
         kpar2 = kpar.kpar2;
         
         K = a*kernel(X1,X2,ktype1,kpar1) + b*kernel(X1,X2,ktype2,kpar2);
+
+    case 'poslinear' % The positive linear kernel function.
+        Kk = X1*X2';
+        K = (Kk > 0).*Kk;
         
     otherwise	% default case
         error ('unknown kernel type')
